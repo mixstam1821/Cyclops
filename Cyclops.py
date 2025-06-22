@@ -1,4 +1,3 @@
-# Cyclops.py
 import os
 import numpy as np
 import requests
@@ -849,7 +848,7 @@ source = ColumnDataSource(
 )
 
 # -- Build Map
-title_str = f"Cyclops: Live Weather Map — {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} -- Data from openweathermap.org"
+title_str = f"Cyclops: Live Weather Map — {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}      |      Data from openweathermap.org"
 p = figure(match_aspect=True,
     x_axis_type="mercator",
     y_axis_type="mercator",
@@ -977,7 +976,7 @@ def region_callback(attr, old, new):
         cloud=[0] * len(mx),
         temp=[0] * len(mx),
         humidity=[0] * len(mx),
-        pressure=[0] * len(mx),
+        pressure=[0] * len(mx), hidden=np.ones(len(mx)) * np.min(my)
     )
     fetch_and_update()  # Fetch new data immediately
 
@@ -985,11 +984,10 @@ radio_group = RadioButtonGroup(labels=region_labels, active=10, stylesheets = [r
 radio_group.on_change('active', region_callback)
 
 # Info
-info = Div(text="<b>Select region:</b>", styles={"color": "#FFD700", "font-size": "18px", 'background-color': '#2F2F2F', 'margin-top':'10px'})
+info = Div(text="<b>Select region:</b>", styles={"color": "#FFD700", "font-size": "18px", 'background-color': '#2F2F2F', 'margin-top':'12px'})
 
 # -- Layout --
 layout = column(p, row(info, radio_group), sizing_mode="stretch_both",stylesheets=[gstyle])
 curdoc().add_root(layout)
 curdoc().title = "Cyclops"
-
 
