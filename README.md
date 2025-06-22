@@ -1,7 +1,7 @@
 # Cyclops 🌍  
 **Live Global Weather Map Explorer**
 
-Cyclops is an interactive, real-time meteorological visualization tool built with Python and Bokeh. Instantly see cloud cover, temperature, humidity, and pressure at cities and weather stations around the globe—grouped by continent, region, or even country. Ideal for researchers, educators, and weather enthusiasts.
+##### Cyclops is an interactive, real-time meteorological visualization tool built with Python and Bokeh. Instantly see cloud cover, temperature, humidity, and pressure at cities and weather stations around the globe—grouped by continent, region, or even country. Ideal for researchers, educators, and weather enthusiasts.
 ![Cyclops Screenshot1](assets/Screenshot_20250622_031056.png)
 ![Cyclops Screenshot2](assets/Screenshot_20250622_030913.png)
 ---
@@ -38,4 +38,17 @@ Try it live:
    ```sh
    pip install -r requirements.txt
    bokeh serve --show Cyclops.py
+    ```
+
+OR
+using Docker:
+```
+git clone https://github.com/mixstam1821/Cyclops.git
+cd Cyclops
+
+# Build your image
+docker build -t cyclops-app .
+
+# Run the container
+docker run -p 8000:8000 cyclops-app
 ```
